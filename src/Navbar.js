@@ -1,6 +1,6 @@
 // src/Navbar.js
 import React, { useState } from "react";
-import { Menu, X } from "lucide-react"; // ✅ Icon library (works automatically in most setups)
+import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,7 +9,7 @@ const Navbar = () => {
   const closeMenu = () => setIsOpen(false);
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-[#3E2723]/90 backdrop-blur-md border-b border-[#5D4037]/50 shadow-md">
+    <nav className="fixed top-0 left-0 w-full z-[1000] bg-[#3E2723]/90 backdrop-blur-md border-b border-[#5D4037]/50 shadow-md">
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         {/* Logo / Brand */}
         <h1 className="text-2xl font-bold text-[#EFEBE9] tracking-wide">
@@ -30,26 +30,29 @@ const Navbar = () => {
         {/* Mobile Toggle Button */}
         <button
           onClick={handleToggle}
-          className="md:hidden text-[#EFEBE9] hover:text-[#D7CCC8] focus:outline-none"
+          className="md:hidden text-[#EFEBE9] hover:text-[#D7CCC8] focus:outline-none z-[1100] relative"
+          aria-label="Toggle Menu"
         >
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
+          {isOpen ? <X size={32} strokeWidth={2.5} /> : <Menu size={32} strokeWidth={2.5} />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
-      {isOpen && (
-        <div className="md:hidden bg-[#4E342E]/95 border-t border-[#5D4037]/50 backdrop-blur-md shadow-lg">
-          <ul className="flex flex-col items-center space-y-4 py-6 text-[#EFEBE9] font-medium">
-            <li><a href="#hero" onClick={closeMenu} className="hover:text-[#D7CCC8] transition-colors">Home</a></li>
-            <li><a href="#about" onClick={closeMenu} className="hover:text-[#D7CCC8] transition-colors">About Us</a></li>
-            <li><a href="#services" onClick={closeMenu} className="hover:text-[#D7CCC8] transition-colors">Services</a></li>
-            <li><a href="#pricing" onClick={closeMenu} className="hover:text-[#D7CCC8] transition-colors">Pricing</a></li>
-            <li><a href="#joinus" onClick={closeMenu} className="hover:text-[#D7CCC8] transition-colors">Join Us</a></li>
-            <li><a href="#membership" onClick={closeMenu} className="hover:text-[#D7CCC8] transition-colors">Membership</a></li>
-            <li><a href="#contact" onClick={closeMenu} className="hover:text-[#D7CCC8] transition-colors">Contact</a></li>
-          </ul>
-        </div>
-      )}
+      {/* Mobile Dropdown Menu */}
+      <div
+        className={`md:hidden absolute top-[100%] left-0 w-full bg-[#4E342E]/95 border-t border-[#5D4037]/50 backdrop-blur-md shadow-lg transform transition-all duration-500 ease-in-out ${
+          isOpen ? "opacity-100 translate-y-0 visible" : "opacity-0 -translate-y-5 invisible"
+        }`}
+      >
+        <ul className="flex flex-col items-center space-y-5 py-8 text-[#EFEBE9] font-medium text-lg">
+          <li><a href="#hero" onClick={closeMenu} className="hover:text-[#D7CCC8] transition-colors">Home</a></li>
+          <li><a href="#about" onClick={closeMenu} className="hover:text-[#D7CCC8] transition-colors">About Us</a></li>
+          <li><a href="#services" onClick={closeMenu} className="hover:text-[#D7CCC8] transition-colors">Services</a></li>
+          <li><a href="#pricing" onClick={closeMenu} className="hover:text-[#D7CCC8] transition-colors">Pricing</a></li>
+          <li><a href="#joinus" onClick={closeMenu} className="hover:text-[#D7CCC8] transition-colors">Join Us</a></li>
+          <li><a href="#membership" onClick={closeMenu} className="hover:text-[#D7CCC8] transition-colors">Membership</a></li>
+          <li><a href="#contact" onClick={closeMenu} className="hover:text-[#D7CCC8] transition-colors">Contact</a></li>
+        </ul>
+      </div>
     </nav>
   );
 };
