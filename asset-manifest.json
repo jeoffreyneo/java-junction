@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/java-junction/static/css/main.eb6887f0.css",
+    "main.js": "/java-junction/static/js/main.07d0d090.js",
+    "index.html": "/java-junction/index.html",
+    "main.eb6887f0.css.map": "/java-junction/static/css/main.eb6887f0.css.map",
+    "main.07d0d090.js.map": "/java-junction/static/js/main.07d0d090.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.eb6887f0.css",
+    "static/js/main.07d0d090.js"
+  ]
+}
