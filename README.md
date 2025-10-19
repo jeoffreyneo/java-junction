@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -19,7 +20,40 @@ You may also see any lint errors in the console.
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+### `npm run build`# Java Junction ☕
+
+A modern cyber cafe website built with **React** and **Tailwind CSS**, designed for fast internet browsing, gaming, and community events.
+
+---
+
+## 🚀 Features
+
+- 💻 Clean, responsive design
+- 🎯 Fast and lightweight frontend
+- 📱 Mobile-friendly layout
+- 🧾 Pricing section with Philippine Peso rates
+- 📬 Contact form
+- 🛠️ Easy to deploy with GitHub Pages
+
+---
+
+## 🛠️ Tech Stack
+
+- React
+- Tailwind CSS
+- PostCSS
+- gh-pages (for deployment)
+
+---
+
+## 📦 Installation
+
+1. Clone the repo:
+
+   ```bash
+   git clone https://github.com/jeoffreyneo/java-junction.git
+   cd java-junction
+
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -68,3 +102,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+=======
+# java-junction
+>>>>>>> 628d548da69d227949034c2a8b14e2776870946d
