@@ -1,14 +1,13 @@
 {
   "files": {
-    "main.css": "/java-junction/static/css/main.ac581f8d.css",
-    "main.js": "/java-junction/static/js/main.9105d3a4.js",
-    "static/media/background.jpg": "/java-junction/static/media/background.15dea12bdc939e1b5370.jpg",
+    "main.css": "/java-junction/static/css/main.877aa31d.css",
+    "main.js": "/java-junction/static/js/main.c92aa4c7.js",
     "index.html": "/java-junction/index.html",
-    "main.ac581f8d.css.map": "/java-junction/static/css/main.ac581f8d.css.map",
-    "main.9105d3a4.js.map": "/java-junction/static/js/main.9105d3a4.js.map"
+    "main.877aa31d.css.map": "/java-junction/static/css/main.877aa31d.css.map",
+    "main.c92aa4c7.js.map": "/java-junction/static/js/main.c92aa4c7.js.map"
   },
   "entrypoints": [
-    "static/css/main.ac581f8d.css",
-    "static/js/main.9105d3a4.js"
+    "static/css/main.877aa31d.css",
+    "static/js/main.c92aa4c7.js"
   ]
 }
