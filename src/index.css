@@ -2,8 +2,54 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Optional: body styles */
-body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
+/* Smooth scroll for navbar link clicks */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbar for cinematic effect */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Optional: glowing text style */
+.text-glow {
+  text-shadow: 0 0 20px rgba(34, 211, 238, 0.9),
+               0 0 40px rgba(34, 211, 238, 0.6);
+}
+
+/* Optional: blur overlay for modern aesthetic */
+.bg-blur {
+  backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0.5);
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out;
+}
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 50px rgba(0, 255, 255, 0.4);
+  }
+}
+
+.animate-glow {
+  animation: glowPulse 3s ease-in-out infinite;
 }

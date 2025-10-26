@@ -1,12 +1,51 @@
-import React from 'react';
+import React from "react";
+import { motion } from "framer-motion";
 
 const Hero = () => {
+  const images = [
+    "/photo1.jpg", // replace with your image names
+    "/photo2.jpg",
+    "/photo3.jpg",
+  ];
+
   return (
-    <section className="bg-[url('https://images.unsplash.com/photo-1559028012-481c04fa7023')] bg-cover bg-center h-[450px] text-white flex items-center justify-center">
-      <div className="bg-black bg-opacity-60 p-10 rounded-lg text-center max-w-xl">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">Welcome to Java Junction</h1>
-        <p className="mb-6 text-lg">Fast internet. Gaming. Printing. Great coffee.</p>
-        <button className="bg-yellow-400 text-black px-6 py-2 rounded hover:bg-yellow-300">Book a Session</button>
+    <section
+      id="hero"
+      className="relative w-full h-screen overflow-hidden bg-black"
+    >
+      <div className="absolute inset-0 flex overflow-x-auto snap-x snap-mandatory scroll-smooth scrollbar-hide">
+        {images.map((img, index) => (
+          <motion.div
+            key={index}
+            className="relative w-full h-screen flex-shrink-0 snap-center"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+          >
+            <img
+              src={img}
+              alt={`Java Junction ${index + 1}`}
+              className="w-full h-full object-cover brightness-75"
+            />
+            {/* Gradient overlay for cinematic tone */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-black/80"></div>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* Optional cinematic overlay text */}
+      <div className="absolute inset-0 flex flex-col items-center justify-end pb-16 text-center text-white pointer-events-none">
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="text-5xl md:text-6xl font-bold text-cyan-400 drop-shadow-[0_0_25px_#22d3ee]"
+        >
+          Java Junction Cyber Café
+        </motion.h2>
+        <p className="text-gray-300 mt-4 text-lg">
+          The Home of Gaming Excellence
+        </p>
       </div>
     </section>
   );

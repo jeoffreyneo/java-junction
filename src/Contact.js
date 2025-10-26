@@ -1,43 +1,38 @@
-import React from 'react';
+import React from "react";
 
-function Contact() {
+export default function Contact() {
   return (
-    <section id="contact" className="py-20 px-4 max-w-4xl mx-auto my-12 bg-black bg-opacity-60 rounded text-white">
-      <h2 className="text-3xl font-bold mb-6 text-center">Contact Us</h2>
-      <form className="space-y-6">
-        <div>
-          <label className="block mb-2">Name</label>
+    <div className="text-center px-6">
+      <h2 className="text-4xl font-bold mb-4 text-cyan-400 drop-shadow-[0_0_15px_rgba(34,211,238,0.7)]">
+        Contact Us
+      </h2>
+      <p className="text-gray-400 mb-8">
+        Have questions or want to book an event? Reach out — we’ll respond as soon as possible!
+      </p>
+      <div className="max-w-lg mx-auto bg-[#0d101b] p-8 rounded-2xl shadow-lg shadow-cyan-500/20">
+        <form>
           <input
             type="text"
-            className="w-full p-3 rounded bg-gray-800 border border-gray-600 text-white"
-            placeholder="Your name"
+            placeholder="Name"
+            className="w-full mb-4 p-3 rounded-lg bg-[#090c14] text-gray-300 outline-none"
           />
-        </div>
-        <div>
-          <label className="block mb-2">Email</label>
           <input
             type="email"
-            className="w-full p-3 rounded bg-gray-800 border border-gray-600 text-white"
-            placeholder="Your email"
+            placeholder="Email"
+            className="w-full mb-4 p-3 rounded-lg bg-[#090c14] text-gray-300 outline-none"
           />
-        </div>
-        <div>
-          <label className="block mb-2">Message</label>
           <textarea
-            rows="4"
-            className="w-full p-3 rounded bg-gray-800 border border-gray-600 text-white"
-            placeholder="Your message"
+            placeholder="Message"
+            className="w-full mb-6 p-3 rounded-lg bg-[#090c14] text-gray-300 outline-none h-32"
           ></textarea>
-        </div>
-        <button
-          type="submit"
-          className="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-6 rounded transition"
-        >
-          Send Message
-        </button>
-      </form>
-    </section>
+          <button
+            type="submit"
+            className="bg-cyan-500 hover:bg-cyan-400 text-black font-bold px-6 py-3 rounded-lg w-full transition"
+          >
+            Send Message
+          </button>
+        </form>
+      </div>
+    </div>
   );
 }
-
-export default Contact;

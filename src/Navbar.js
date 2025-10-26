@@ -1,58 +1,73 @@
-// src/Navbar.js
 import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleToggle = () => setIsOpen(!isOpen);
-  const closeMenu = () => setIsOpen(false);
-
   return (
-    <nav className="fixed top-0 left-0 w-full z-[1000] bg-[#3E2723]/90 backdrop-blur-md border-b border-[#5D4037]/50 shadow-md">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        {/* Logo / Brand */}
-        <h1 className="text-2xl font-bold text-[#EFEBE9] tracking-wide">
-          Java Junction
+    <nav className="fixed top-0 left-0 w-full bg-[#0a0a0f]/80 backdrop-blur-lg border-b border-cyan-500/30 shadow-[0_0_25px_#06b6d4]/30 z-50">
+      <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+        {/* Logo */}
+        <h1 className="text-2xl md:text-3xl font-extrabold text-cyan-400 tracking-wide">
+          Java<span className="text-white">Junction</span>
         </h1>
 
-        {/* Desktop Menu */}
-        <ul className="hidden md:flex space-x-8 text-[#EFEBE9] font-medium">
-          <li><a href="#hero" onClick={closeMenu} className="hover:text-[#D7CCC8] transition-colors">Home</a></li>
-          <li><a href="#about" onClick={closeMenu} className="hover:text-[#D7CCC8] transition-colors">About Us</a></li>
-          <li><a href="#services" onClick={closeMenu} className="hover:text-[#D7CCC8] transition-colors">Services</a></li>
-          <li><a href="#pricing" onClick={closeMenu} className="hover:text-[#D7CCC8] transition-colors">Pricing</a></li>
-          <li><a href="#joinus" onClick={closeMenu} className="hover:text-[#D7CCC8] transition-colors">Join Us</a></li>
-          <li><a href="#membership" onClick={closeMenu} className="hover:text-[#D7CCC8] transition-colors">Membership</a></li>
-          <li><a href="#contact" onClick={closeMenu} className="hover:text-[#D7CCC8] transition-colors">Contact</a></li>
+        {/* Desktop Navigation */}
+        <ul className="hidden md:flex space-x-4 lg:space-x-6 text-gray-300 font-medium">
+          {[
+            { name: "Home", link: "#hero" },
+            { name: "Services", link: "#services" },
+            { name: "Pricing", link: "#pricing" },
+            { name: "Join Us", link: "#join" },
+            { name: "Membership", link: "#membership" },
+            { name: "Contact", link: "#contact" },
+          ].map((item, index) => (
+            <li key={index}>
+              <a
+                href={item.link}
+                className="relative inline-block px-4 py-2 text-sm uppercase tracking-wide text-gray-300 hover:text-cyan-400 transition-all duration-300 group"
+              >
+                <span className="absolute inset-0 border border-cyan-400/50 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                <span className="relative z-10">{item.name}</span>
+              </a>
+            </li>
+          ))}
         </ul>
 
-        {/* Mobile Toggle Button */}
+        {/* Mobile Menu Button */}
         <button
-          onClick={handleToggle}
-          className="md:hidden text-[#EFEBE9] hover:text-[#D7CCC8] focus:outline-none z-[1100] relative"
-          aria-label="Toggle Menu"
+          onClick={() => setIsOpen(!isOpen)}
+          className="md:hidden text-cyan-400 focus:outline-none"
         >
-          {isOpen ? <X size={32} strokeWidth={2.5} /> : <Menu size={32} strokeWidth={2.5} />}
+          {isOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
 
       {/* Mobile Dropdown Menu */}
-      <div
-        className={`md:hidden absolute top-[100%] left-0 w-full bg-[#4E342E]/95 border-t border-[#5D4037]/50 backdrop-blur-md shadow-lg transform transition-all duration-500 ease-in-out ${
-          isOpen ? "opacity-100 translate-y-0 visible" : "opacity-0 -translate-y-5 invisible"
-        }`}
-      >
-        <ul className="flex flex-col items-center space-y-5 py-8 text-[#EFEBE9] font-medium text-lg">
-          <li><a href="#hero" onClick={closeMenu} className="hover:text-[#D7CCC8] transition-colors">Home</a></li>
-          <li><a href="#about" onClick={closeMenu} className="hover:text-[#D7CCC8] transition-colors">About Us</a></li>
-          <li><a href="#services" onClick={closeMenu} className="hover:text-[#D7CCC8] transition-colors">Services</a></li>
-          <li><a href="#pricing" onClick={closeMenu} className="hover:text-[#D7CCC8] transition-colors">Pricing</a></li>
-          <li><a href="#joinus" onClick={closeMenu} className="hover:text-[#D7CCC8] transition-colors">Join Us</a></li>
-          <li><a href="#membership" onClick={closeMenu} className="hover:text-[#D7CCC8] transition-colors">Membership</a></li>
-          <li><a href="#contact" onClick={closeMenu} className="hover:text-[#D7CCC8] transition-colors">Contact</a></li>
-        </ul>
-      </div>
+      {isOpen && (
+        <div className="md:hidden bg-[#0a0a0f]/90 border-t border-cyan-500/30 backdrop-blur-md px-6 pb-6 animate-fadeIn">
+          <ul className="flex flex-col space-y-3 text-gray-300">
+            {[
+              { name: "Home", link: "#hero" },
+              { name: "Services", link: "#services" },
+              { name: "Pricing", link: "#pricing" },
+              { name: "Join Us", link: "#join" },
+              { name: "Membership", link: "#membership" },
+              { name: "Contact", link: "#contact" },
+            ].map((item, index) => (
+              <li key={index}>
+                <a
+                  href={item.link}
+                  onClick={() => setIsOpen(false)}
+                  className="block text-center py-3 text-sm font-semibold uppercase tracking-wide bg-[#111122] border border-cyan-500/30 rounded-md hover:bg-cyan-500 hover:text-black transition-all duration-300"
+                >
+                  {item.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </nav>
   );
 };
