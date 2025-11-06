@@ -1,53 +1,58 @@
 import React from "react";
-import Navbar from "./Navbar";
-import Hero from "./Hero";
-import Services from "./Services";
-import Pricing from "./Pricing";
-import ExploreMembership from "./ExploreMembership";
-import ContactForm from "./ContactForm";
-import JoinUs from "./JoinUs";
-import Footer from "./Footer";
+import { motion } from "framer-motion";
 
-function App() {
+export default function Hero() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950 text-white">
-      {/* Fixed Navbar */}
-      <Navbar />
+    <section
+      id="hero"
+      className="relative h-screen flex flex-col justify-center items-center text-center overflow-hidden"
+      style={{
+        backgroundImage: `url(${process.env.PUBLIC_URL}/images/hero-bg.jpg)`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+      {/* Dark overlay for readability */}
+      <div className="absolute inset-0 bg-black bg-opacity-60"></div>
 
-      {/* Hero Section - Removed extra black space */}
-      <section id="hero" className="mt-16 md:mt-20 mb-32 md:mb-40">
-        <Hero />
-      </section>
+      {/* Main Hero Content */}
+      <motion.div
+        className="relative z-20 max-w-3xl px-6"
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.2, ease: "easeOut" }}
+      >
+        <h1 className="text-5xl md:text-6xl font-bold text-cyan-400 drop-shadow-[0_0_10px_#00ffff] mb-4">
+          Powered by Performance. Fueled by Passion.
+        </h1>
+        <p className="text-gray-300 text-lg md:text-xl mb-12">
+          Step into the future of gaming at{" "}
+          <span className="text-cyan-400 font-semibold">Java Junction</span> —
+          where every click, every sip, and every moment ignites your play.
+        </p>
+      </motion.div>
 
-      {/* Services Section */}
-      <section id="services" className="pt-32 md:pt-40 mb-32 md:mb-40">
-        <Services />
-      </section>
-
-      {/* Pricing Section */}
-      <section id="pricing" className="pt-32 md:pt-40 mb-32 md:mb-40">
-        <Pricing />
-      </section>
-
-      {/* Join Us Section */}
-      <section id="join" className="pt-32 md:pt-40 mb-32 md:mb-40">
-        <JoinUs />
-      </section>
-
-      {/* Explore Membership Section */}
-      <section id="membership" className="pt-32 md:pt-40 mb-32 md:mb-40">
-        <ExploreMembership />
-      </section>
-
-      {/* Contact Section */}
-      <section id="contact" className="pt-32 md:pt-40 mb-32 md:mb-40">
-        <ContactForm />
-      </section>
-
-      {/* Footer Section */}
-      <Footer />
-    </div>
+      {/* Floating Stats */}
+      <motion.div
+        className="relative z-20 flex flex-wrap justify-center gap-10 text-center"
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.5, delay: 0.8 }}
+      >
+        {[
+          { number: "1,700+", label: "Matches Played" },
+          { number: "3,000+", label: "Happy Gamers" },
+          { number: "98%", label: "Customer Satisfaction" },
+        ].map((stat, index) => (
+          <div key={index} className="text-cyan-400">
+            <h3 className="text-4xl md:text-5xl font-bold drop-shadow-[0_0_10px_#00ffff]">
+              {stat.number}
+            </h3>
+            <p className="text-gray-300 text-sm md:text-base">{stat.label}</p>
+          </div>
+        ))}
+      </motion.div>
+    </section>
   );
 }
-
-export default App;

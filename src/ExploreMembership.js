@@ -6,6 +6,7 @@ const ExploreMembership = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    password: "",
     payment: "",
     cardNumber: "",
     expiry: "",
@@ -19,6 +20,38 @@ const ExploreMembership = () => {
 
   const nextStep = () => setStep((s) => s + 1);
   const prevStep = () => setStep((s) => s - 1);
+
+  // ✅ Submits membership registration to backend
+  const handleSubmit = async () => {
+    try {
+      const response = await fetch("http://localhost:5001/api/members/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          password: formData.password || "123456", // temporary password if none entered
+          paymentMethod: formData.payment,
+          gcashNumber: formData.gcashNumber,
+          cardNumber: formData.cardNumber,
+          expiry: formData.expiry,
+          cvv: formData.cvv,
+        }),
+      });
+
+      if (response.ok) {
+        alert("✅ Membership registered successfully!");
+        nextStep();
+      } else {
+        const errorText = await response.text();
+        alert("❌ Error registering membership: " + errorText);
+      }
+    } catch (error) {
+      alert("⚠️ Network error: " + error.message);
+    }
+  };
 
   return (
     <section
@@ -54,6 +87,14 @@ const ExploreMembership = () => {
             name="email"
             placeholder="Email Address"
             value={formData.email}
+            onChange={handleChange}
+            className="w-full p-3 rounded-lg bg-[#0d152b] text-white placeholder-gray-400 focus:ring-2 focus:ring-cyan-400 outline-none"
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Create Password"
+            value={formData.password}
             onChange={handleChange}
             className="w-full p-3 rounded-lg bg-[#0d152b] text-white placeholder-gray-400 focus:ring-2 focus:ring-cyan-400 outline-none"
           />
@@ -147,7 +188,7 @@ const ExploreMembership = () => {
               Back
             </button>
             <button
-              onClick={nextStep}
+              onClick={handleSubmit}
               className="px-8 py-3 bg-cyan-500 hover:bg-cyan-600 text-black font-bold rounded-lg shadow-[0_0_10px_#00ffff] transition-all"
             >
               Confirm

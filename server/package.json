@@ -1,0 +1,25 @@
+{
+  "name": "java-junction-backend",
+  "version": "1.0.0",
+  "description": "Backend server for Java Junction Internet Café",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "Java Junction Team",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.4.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}

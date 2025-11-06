@@ -1,75 +1,55 @@
 import React, { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
+import LoginModal from "./LoginModal";
 
-const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+export default function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-[#0a0a0f]/80 backdrop-blur-lg border-b border-cyan-500/30 shadow-[0_0_25px_#06b6d4]/30 z-50">
-      <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
-        {/* Logo */}
-        <h1 className="text-2xl md:text-3xl font-extrabold text-cyan-400 tracking-wide">
-          Java<span className="text-white">Junction</span>
-        </h1>
+    <nav className="fixed top-0 left-0 w-full bg-[#0a0e1a]/80 backdrop-blur-lg text-white py-4 px-6 flex justify-between items-center z-50 shadow-lg">
+      <Link
+        to="/"
+        className="text-2xl font-extrabold text-cyan-400 drop-shadow-[0_0_10px_#00ffff]"
+      >
+        Java Junction
+      </Link>
 
-        {/* Desktop Navigation */}
-        <ul className="hidden md:flex space-x-4 lg:space-x-6 text-gray-300 font-medium">
-          {[
-            { name: "Home", link: "#hero" },
-            { name: "Services", link: "#services" },
-            { name: "Pricing", link: "#pricing" },
-            { name: "Join Us", link: "#join" },
-            { name: "Membership", link: "#membership" },
-            { name: "Contact", link: "#contact" },
-          ].map((item, index) => (
-            <li key={index}>
-              <a
-                href={item.link}
-                className="relative inline-block px-4 py-2 text-sm uppercase tracking-wide text-gray-300 hover:text-cyan-400 transition-all duration-300 group"
-              >
-                <span className="absolute inset-0 border border-cyan-400/50 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-                <span className="relative z-10">{item.name}</span>
-              </a>
-            </li>
-          ))}
-        </ul>
+      <div className="hidden md:flex space-x-6">
+        <a href="#hero" className="hover:text-cyan-400 transition">
+          Home
+        </a>
+        <a href="#services" className="hover:text-cyan-400 transition">
+          Services
+        </a>
+        <a href="#pricing" className="hover:text-cyan-400 transition">
+          Pricing
+        </a>
+        <a href="#membership" className="hover:text-cyan-400 transition">
+          Membership
+        </a>
+        <a href="#contact" className="hover:text-cyan-400 transition">
+          Contact
+        </a>
 
-        {/* Mobile Menu Button */}
+        {/* ✅ Login Button */}
         <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden text-cyan-400 focus:outline-none"
+          onClick={() => setShowLogin(true)}
+          className="bg-cyan-500 hover:bg-cyan-600 text-black px-4 py-2 rounded-lg font-semibold shadow-[0_0_10px_#00ffff] transition-all"
         >
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
+          Login
         </button>
       </div>
 
-      {/* Mobile Dropdown Menu */}
-      {isOpen && (
-        <div className="md:hidden bg-[#0a0a0f]/90 border-t border-cyan-500/30 backdrop-blur-md px-6 pb-6 animate-fadeIn">
-          <ul className="flex flex-col space-y-3 text-gray-300">
-            {[
-              { name: "Home", link: "#hero" },
-              { name: "Services", link: "#services" },
-              { name: "Pricing", link: "#pricing" },
-              { name: "Join Us", link: "#join" },
-              { name: "Membership", link: "#membership" },
-              { name: "Contact", link: "#contact" },
-            ].map((item, index) => (
-              <li key={index}>
-                <a
-                  href={item.link}
-                  onClick={() => setIsOpen(false)}
-                  className="block text-center py-3 text-sm font-semibold uppercase tracking-wide bg-[#111122] border border-cyan-500/30 rounded-md hover:bg-cyan-500 hover:text-black transition-all duration-300"
-                >
-                  {item.name}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+      {/* Mobile Menu Button */}
+      <button
+        onClick={() => setMenuOpen(!menuOpen)}
+        className="md:hidden text-cyan-400"
+      >
+        ☰
+      </button>
+
+      {showLogin && <LoginModal onClose={() => setShowLogin(false)} />}
     </nav>
   );
-};
-
-export default Navbar;
+}
